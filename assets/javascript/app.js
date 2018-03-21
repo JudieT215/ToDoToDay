@@ -3,7 +3,7 @@
 
 jQuery(document).ready(function($) {
   $.ajax({
-<<<<<<< HEAD
+
     url:
       "http://api.wunderground.com/api/2a101c3a4d1a6ce9/geolookup/conditions/q/IA/Cedar_Rapids.json",
     dataType: "jsonp",
@@ -12,18 +12,7 @@ jQuery(document).ready(function($) {
       var temp_f = parsed_json["current_observation"]["temp_f"];
       alert("Current temperature in " + location + " is: " + temp_f);
     }
-=======
-  url : "http://api.wunderground.com/api/2a101c3a4d1a6ce9/geolookup/conditions/q/ " + state + " IA/Cedar_Rapids.json",
-  dataType : "jsonp",
-  success : function(parsed_json) {
-  var location = parsed_json['location']['city'];
-  var temp_f = parsed_json['current_observation']['temp_f'];
-  alert("Current temperature in " + location + " is: " + temp_f);
-  }
->>>>>>> 30600307e7a7b7ca5210ad617e76c99a742af719
   });
-});
-
 var url;
 var state;
 state = "NJ";
