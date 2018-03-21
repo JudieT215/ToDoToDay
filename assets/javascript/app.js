@@ -1,5 +1,4 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script>
+
 jQuery(document).ready(function($) {
   $.ajax({
   url : "http://api.wunderground.com/api/Your_Key/geolookup/conditions/q/IA/Cedar_Rapids.json",
@@ -11,4 +10,3 @@ jQuery(document).ready(function($) {
   }
   });
 });
-</script>
