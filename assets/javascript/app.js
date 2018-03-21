@@ -1,4 +1,6 @@
 
+
+
 jQuery(document).ready(function($) {
   $.ajax({
   url : "http://api.wunderground.com/api/Your_Key/geolookup/conditions/q/IA/Cedar_Rapids.json",
@@ -10,3 +12,6 @@ jQuery(document).ready(function($) {
   }
   });
 });
+
+console.log (url);
+
