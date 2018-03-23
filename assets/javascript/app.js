@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
   var state = "PA";
   var city = "Philadelphia";
   //Here we are building the URL we need to query the database
-  var queryURL = "http://api.wunderground.com/api/" + APIKeyW + "/geolookup/conditions/q/" + state + "/" + city + ".json";
+  var queryURL = "https://api.wunderground.com/api/" + APIKeyW + "/geolookup/conditions/q/" + state + "/" + city + ".json";
   console.log(queryURL);
   // Here we run our AJAX call to the WeatherUndergound API
 
