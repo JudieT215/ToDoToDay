@@ -24,6 +24,7 @@ console.log(queryURL);
       var location = parsed_json["location"]["city"];
       var temp_f = parsed_json["current_observation"]["temp_f"];
       alert("Current temperature in " + location + " is: " + temp_f);
+      console.log(city);    
     }
   });
   // console.log(response);
