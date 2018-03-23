@@ -65,9 +65,20 @@ console.log(queryURL);
     // });
 
     // Capture user input
-    city = $("#City-Name").val().trim();
-    state = $("#State").val().trim();
-    console.log("CITY: " + city + ", STATE: " + state);
+    function getInput() {
+        city = $("#City-Name").val().trim();
+        state = $("#State").val().trim();
+        console.log("CITY: " + city + ", STATE: " + state); 
+    }
+    
+    // Submit button to add new City/State
+    $("#submit-button").on("click", function(event) {
+        event.preventDefault();
+        getInput();
+    });
+
+    // On load, set focus on City input box
+    $("#City-Name").focus();
 
 });
 
