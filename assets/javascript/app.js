@@ -2,10 +2,23 @@
 
 
 jQuery(document).ready(function($) {
+ 
+  //This is our API Key
+  var APIKeyW = "2a101c3a4d1a6ce9"
+ var state = "NJ";
+  var city = "Camden";
+  //Here we are building the URL we need to query the database
+  var queryURL = "http://api.wunderground.com/api/" + APIKeyW + "/geolookup/conditions/q/" +state+ "/" +city+ ".json";
+console.log(queryURL);
+  // Here we run our AJAX call to the WeatherUndergound API
+
+  
+  console.log(state);
+
   $.ajax({
 
-    url:
-      "http://api.wunderground.com/api/2a101c3a4d1a6ce9/geolookup/conditions/q/IA/Cedar_Rapids.json",
+    url: queryURL,
+    method: "GET",
     dataType: "jsonp",
     success: function(parsed_json) {
       var location = parsed_json["location"]["city"];
@@ -13,10 +26,11 @@ jQuery(document).ready(function($) {
       alert("Current temperature in " + location + " is: " + temp_f);
     }
   });
-var url;
-var state;
-state = "NJ";
-console.log (url);
+  // console.log(response);
+
+
+
+// if "current_observation" = "sunny"
 
 
 
