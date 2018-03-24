@@ -2,6 +2,7 @@ jQuery(document).ready(function($) {
   //global var
   var stateList = [
     "AK",
+    "ak",
     "AL",
     "AR",
     "AZ",
