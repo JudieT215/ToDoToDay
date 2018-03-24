@@ -90,6 +90,17 @@ jQuery(document).ready(function ($) {
         //     console.log(response);
         // });
     }
+    //Validating Function
+       function validate()
+      {
+      
+         if(document.formName.city.value == "" )
+         {
+            alert( "Please provide your City!" );
+            document.formName.city.focus();
+            return false;
+         };
+        }
 
     // Capture user input
     function getInput() {
@@ -103,7 +114,8 @@ jQuery(document).ready(function ($) {
         event.preventDefault();
         getInput();
         geoCode();
-        // gPlace();
+        gPlace();
+        validate();
     });
 
     // On load, set focus on City input box
@@ -111,4 +123,23 @@ jQuery(document).ready(function ($) {
 
 
 });
+
+// Initializing Firebase
+
+var config = {
+    apiKey: "AIzaSyBCbkDNIF7u4qh46J23Cx8uy1fXUkM_gAM",
+    authDomain: "todotoday-c8a4f.firebaseapp.com",
+    databaseURL: "https://todotoday-c8a4f.firebaseio.com",
+    projectId: "todotoday-c8a4f",
+    storageBucket: "",
+    messagingSenderId: "33820231165"
+  };
+
+  firebase.initializeApp(config);
+
+var database = firebase.database();
+
+
+$("#submit-button").on("click", function(event) {
+  event.preventDefault();
 
