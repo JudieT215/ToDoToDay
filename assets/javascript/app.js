@@ -2,8 +2,13 @@
 
 
 jQuery(document).ready(function ($) {
-//gobal var
+//global var
     var stateList = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MH", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "PW", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"];
+    var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
+    var address = "1650+Market+Street";
+    // var placeLoc = "-33.8670522,151.1957362"; // Dummy placeholder
+    var placeLoc = "";
+    var placeType = ""; // Optional for now
 
 
 
@@ -42,8 +47,6 @@ jQuery(document).ready(function ($) {
 
     // Google Maps Geocode API request
     function geoCode() {
-        var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
-        var address = "1650+Market+Street";
         var api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "," + city + "," + state + "&key=" + apiKeyG;
         var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
         var request_url = cors_anywhere_url + api_url;
@@ -51,17 +54,17 @@ jQuery(document).ready(function ($) {
             url: request_url,
             context: document.body
         })
-            .done(function(data) {
+            .then(function(data) {
                 console.log(request_url);
-                console.log(data);
+                console.log(data.results);
+                placeLoc = data.results[0].geometry.location.lat + "," + data.results[0].geometry.location.lng;
+                console.log("PLACE COORD: " + placeLoc);
+                gPlace();
             });
     }
 
     // Google Places API request
     function gPlace() {
-        var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
-        var placeLoc = "-33.8670522,151.1957362";
-        var placeType = ""; // Optional for now
         var api_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=500&location=" + placeLoc + "&type=" + placeType + "&key=" + apiKeyG;
         var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
         var request_url = cors_anywhere_url + api_url;
@@ -100,7 +103,7 @@ jQuery(document).ready(function ($) {
         event.preventDefault();
         getInput();
         geoCode();
-        gPlace();
+        // gPlace();
     });
 
     // On load, set focus on City input box
