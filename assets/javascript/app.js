@@ -2,6 +2,7 @@ jQuery(document).ready(function($) {
   //global var
   var stateList = [
     "AK",
+    "ak",
     "AL",
     "AR",
     "AZ",
@@ -101,9 +102,11 @@ jQuery(document).ready(function($) {
         console.log("Condition Picture" + conditionPic);
         $("#picture").html("<img src = " + conditionPic + ">");
         {/* $('#theDiv').prepend('<img id="theImg" src="theImg.png" />') */ }
-
-      }
-    });
+        
+        placeLoc = parsed_json["location"]["lat"]+","+parsed_json["location"]["lon"];
+        console.log (placeLoc);
+    }
+  })
   }
 
   // console.log(response);
