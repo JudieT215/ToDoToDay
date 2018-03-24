@@ -209,4 +209,4 @@ jQuery(document).ready(function($) {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-});
+}); // NO JAVASCRIPT BELOW THIS LINE
