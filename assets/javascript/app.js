@@ -85,6 +85,17 @@ jQuery(document).ready(function ($) {
         //     console.log(response);
         // });
     }
+    //Validating Function
+       function validate()
+      {
+      
+         if(document.formName.city.value == "" )
+         {
+            alert( "Please provide your City!" );
+            document.formName.city.focus();
+            return false;
+         };
+        }
 
     // Capture user input
     function getInput() {
@@ -99,6 +110,7 @@ jQuery(document).ready(function ($) {
         getInput();
         geoCode();
         gPlace();
+        validate();
     });
 
     // On load, set focus on City input box

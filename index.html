@@ -80,14 +80,15 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Please enter a City Name and State</div>
                         <div class="panel-body">
-                            <form class="form-inline" action="/action_page.php">
+                            <form name="formName"class="form-inline" > 
+                                <!-- action="/action_page.php" -->
                                 <div class="form-group">
                                     <div class="input-field col s6">
-                                        <input placeholder="City Name" id="City-Name" type="text" class="validate">
+                                        <input placeholder="City Name" id="City-Name" type="text" name="city" class="validate">
                                   
                                     </div>
                                     <div class="input-field col s6">
-                                        <input placeholder="State" id="State" type="text" class="validate">
+                                        <input placeholder="State" id="State" type="text" class="validate" minlength="2" maxlength="2">
                                         
                                        
                                     </div>
@@ -111,8 +112,8 @@
                         <div class="card-stacked">
                             <div class="card-content" id ="weather-results">
                                 <p>Current Temperature: <span id ="currentTemp"></span></p>
-                                <p>High Temperature: <span id = "highTemp"></span></p>
-                                <p>Low Temperature: <span id = "lowTemp"></span></p>
+                                <p>Picture: <span id = "picture"></span></p>
+                                <p>??? <span id = "Temp"></span></p>
                             </div>
                         </div>
                     </div>
