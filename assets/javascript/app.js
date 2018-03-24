@@ -43,7 +43,8 @@ jQuery(document).ready(function ($) {
     // Google Maps Geocode API request
     function geoCode() {
         var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
-        var api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA" + "&key=" + apiKeyG;
+        var address = "1650+Market+Street";
+        var api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "," + city + "," + state + "&key=" + apiKeyG;
         var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
         var request_url = cors_anywhere_url + api_url;
         $.ajax({
@@ -51,7 +52,8 @@ jQuery(document).ready(function ($) {
             context: document.body
         })
             .done(function(data) {
-                console.log(data.results);
+                console.log(request_url);
+                console.log(data);
             });
     }
 
