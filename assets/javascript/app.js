@@ -161,15 +161,15 @@ jQuery(document).ready(function($) {
   //Validating Function
     function validate() {
       if (document.formName.city.value == "") {
-        $("#noCity").html("Please provide a City!");
+        $("#noCity").text("Please provide a City!");
         document.formName.city.focus();
         return false;
       }
-    //   if (document.formName.state.value == "") {
-    //     $("#noState").html("Please provide a State!");
-    //     document.formName.state.focus();
-    //     return false;
-    //   }
+       if (document.formName.state.value == "") {
+         $("#noState").text("Please provide a state (expamle: NJ)!");
+         document.formName.state.focus();
+         return false;
+       }
     }
 
   // Capture user input
@@ -178,8 +178,7 @@ jQuery(document).ready(function($) {
       .val()
       .trim();
     state = $("#State")
-      .val()
-      .trim();
+      .val();
     console.log("CITY: " + city + ", STATE: " + state);
   }
 
