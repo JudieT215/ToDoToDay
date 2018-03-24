@@ -188,13 +188,13 @@ jQuery(document).ready(function($) {
 
     }
  function stateValidate() {
-        if (stateList.indexOf(state) > -1) {
-          console.log("State is in the array");
-        } else {
-          console.log("State NOT in array");
-        }
-
-}
+   if (stateList.indexOf(state) > -1) {
+     console.log("State is in the array");
+   } else {
+     $("content").append("<br>", " *This is not a state, please enter in this format (NJ)");
+     console.log("State NOT in array");
+   }
+ }
 
   // Capture user input
   function getInput() {
