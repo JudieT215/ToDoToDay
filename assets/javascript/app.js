@@ -180,11 +180,10 @@ jQuery(document).ready(function($) {
  function stateValidate() {
         if (stateList.indexOf(state) > -1) {
           console.log("State is in the array");
-        // } else if (stateList.indexOf(state) > -1) {
-        //   console.log("State in array");
-        // }
+        } else {
+          console.log("State NOT in array");
+        }
 
-    }
 }
 
   // Capture user input
