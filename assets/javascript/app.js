@@ -188,6 +188,17 @@ jQuery(document).ready(function($) {
     console.log("CITY: " + city + ", STATE: " + state);
   }
 
+  // creating function to display API search results to HTML
+  function displayResults() {
+  var searchResults = $("<div>");
+
+  searchResults.text("test of display")
+
+  $("#results-card").prepend(searchResults);
+
+  }
+
+
   // Submit button to add new City/State and run queries
   $("#submit-button").on("click", function(event) {
     event.preventDefault();
@@ -195,6 +206,7 @@ jQuery(document).ready(function($) {
     geoCode();
     gPlace();
     validate();
+    displayResults();
   });
 
   // On load, set focus on City input box
