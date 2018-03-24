@@ -68,33 +68,43 @@ jQuery(document).ready(function($) {
   var APIKeyW = "2a101c3a4d1a6ce9";
   var state = "PA";
   var city = "Philadelphia";
-  //Here we are building the URL we need to query the database
-  var queryURL =
-    "https://api.wunderground.com/api/" +
-    APIKeyW +
-    "/geolookup/conditions/q/" +
-    state +
-    "/" +
-    city +
-    ".json";
-  console.log(queryURL);
-  // Here we run our AJAX call to the WeatherUndergound API
+  
+  function getWeather() {
+    //Here we are building the URL we need to query the database
+    var queryURL =
+      "https://api.wunderground.com/api/" +
+      APIKeyW +
+      "/geolookup/conditions/q/" +
+      state +
+      "/" +
+      city +
+      ".json";
+    console.log(queryURL);
+    // Here we run our AJAX call to the WeatherUndergound API
 
-  console.log(state);
+    console.log(state);
 
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-    dataType: "jsonp",
-    success: function(parsed_json) {
-      console.log(parsed_json);
-      console.log(parsed_json.current_observation.temperature_string);
-      var location = parsed_json["location"]["city"];
-      var temp_f = parsed_json["current_observation"]["temp_f"];
-      var currTemp = parsed_json["current_observation"]["temperature_string"];
-      console.log("Current temperature in " + location + " is: " + temp_f);
-    }
-  });
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      dataType: "jsonp",
+      success: function (parsed_json) {
+        console.log(parsed_json);
+        console.log(parsed_json.current_observation.temperature_string);
+        var location = parsed_json["location"]["city"];
+        var temp_f = parsed_json["current_observation"]["temp_f"];
+        var currTemp = parsed_json["current_observation"]["temperature_string"];
+        console.log("Current temperature in " + location + " is: " + temp_f);
+        $("#currentTemp").text(currTemp);
+        var conditionPic = parsed_json["current_observation"]["icon_url"];
+        console.log("Condition Picture" + conditionPic);
+        $("#picture").html("<img src = " + conditionPic + ">");
+        {/* $('#theDiv').prepend('<img id="theImg" src="theImg.png" />') */ }
+
+      }
+    });
+  }
 
   // console.log(response);
 
@@ -177,6 +187,14 @@ jQuery(document).ready(function($) {
     //   }
 
     }
+ function stateValidate() {
+   if (stateList.indexOf(state) > -1) {
+     console.log("State is in the array");
+   } else {
+     $("content").append("<br>", " *This is not a state, please enter in this format (NJ)");
+     console.log("State NOT in array");
+   }
+ }
 
   // Capture user input
   function getInput() {
@@ -203,10 +221,12 @@ jQuery(document).ready(function($) {
   $("#submit-button").on("click", function(event) {
     event.preventDefault();
     getInput();
+
+    stateValidate();
+    getWeather();
     geoCode();
-    gPlace();
-    validate();
     displayResults();
+
   });
 
   // On load, set focus on City input box
