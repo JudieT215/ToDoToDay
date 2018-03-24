@@ -177,6 +177,15 @@ jQuery(document).ready(function($) {
     //   }
 
     }
+ function stateValidate() {
+        if (stateList.indexOf(state) > -1) {
+          console.log("State is in the array");
+        // } else if (stateList.indexOf(state) > -1) {
+        //   console.log("State in array");
+        // }
+
+    }
+}
 
   // Capture user input
   function getInput() {
@@ -192,9 +201,9 @@ jQuery(document).ready(function($) {
   $("#submit-button").on("click", function(event) {
     event.preventDefault();
     getInput();
-    geoCode();
-    gPlace();
     validate();
+    stateValidate();
+    geoCode();
   });
 
   // On load, set focus on City input box
