@@ -88,14 +88,31 @@ jQuery(document).ready(function($) {
     dataType: "jsonp",
     success: function(parsed_json) {
       console.log(parsed_json);
-      console.log(parsed_json.current_observation.feelslike_c);
+      console.log(parsed_json.current_observation.temperature_string);
       var location = parsed_json["location"]["city"];
       var temp_f = parsed_json["current_observation"]["temp_f"];
+      var currTemp = parsed_json["current_observation"]["temperature_string"];
       console.log("Current temperature in " + location + " is: " + temp_f);
-    }
+
   });
 
   // console.log(response);
+
+
+
+    // Google Maps Geocode API request
+    function geoCode() {
+        var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
+        var api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA" + "&key=" + apiKeyG;
+        var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
+        var request_url = cors_anywhere_url + api_url;
+        $.ajax({
+            url: request_url,
+            context: document.body
+        })
+            .done(function(data) {
+                console.log(data.results);
+            });
 
   // Google Maps Geocode API request
   function geoCode() {
@@ -165,11 +182,13 @@ jQuery(document).ready(function($) {
         document.formName.city.focus();
         return false;
       }
-       if (document.formName.state.value == "") {
-         $("#noState").text("Please provide a state (expamle: NJ)!");
-         document.formName.state.focus();
-         return false;
-       }
+
+    //   if (document.formName.state.value == "") {
+    //     $("#noState").html("Please provide a State!");
+    //     document.formName.state.focus();
+    //     return false;
+    //   }
+
     }
 
   // Capture user input
