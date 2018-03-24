@@ -93,26 +93,13 @@ jQuery(document).ready(function($) {
       var temp_f = parsed_json["current_observation"]["temp_f"];
       var currTemp = parsed_json["current_observation"]["temperature_string"];
       console.log("Current temperature in " + location + " is: " + temp_f);
-
+    }
   });
 
   // console.log(response);
 
 
 
-    // Google Maps Geocode API request
-    function geoCode() {
-        var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
-        var api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA" + "&key=" + apiKeyG;
-        var cors_anywhere_url = 'https://cors-anywhere.herokuapp.com/';
-        var request_url = cors_anywhere_url + api_url;
-        $.ajax({
-            url: request_url,
-            context: document.body
-        })
-            .done(function(data) {
-                console.log(data.results);
-            });
 
   // Google Maps Geocode API request
   function geoCode() {
@@ -227,4 +214,4 @@ jQuery(document).ready(function($) {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-});
+}); // NO JAVASCRIPT BELOW THIS LINE
