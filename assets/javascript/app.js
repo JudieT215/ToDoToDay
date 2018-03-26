@@ -165,16 +165,8 @@ jQuery(document).ready(function($) {
       .done(function(data) {
         console.log(data.results);
       });
-
-    // This part doesn't work because of CORS
-    // var apiKey = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
-    // $.ajax({
-    //     url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&key=" + apiKey,
-    //     method: "GET"
-    // }).then(function(response) {
-    //     console.log(response);
-    // });
   }
+
   //Validating Function
     function validate() {
       if (document.formName.city.value == "") {
