@@ -195,7 +195,26 @@ jQuery(document).ready(function($) {
 
   firebase.initializeApp(config);
 
+ 
+  //function to input information in the firebase
+  function firebaseInput() {
+  
   var database = firebase.database();
+
+  console.log(database);
+     database.ref().push({
+         fbcity:city,
+         fbstate:state,
+        // fbcurrTemp:currTemp,
+
+         dateAdded: firebase.database.ServerValue.TIMESTAMP
+        
+     });
+
+
+
+  };
+
   
     function dropdownNav() {
       $(".dropdown-trigger").dropdown();
