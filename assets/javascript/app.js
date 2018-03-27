@@ -1,64 +1,8 @@
 jQuery(document).ready(function($) {
+    
+
   //global var
-  var stateList = [
-    "AK",
-    "ak",
-    "AL",
-    "AR",
-    "AZ",
-    "CA",
-    "CO",
-    "CT",
-    "DC",
-    "DE",
-    "FL",
-    "GA",
-    "GU",
-    "HI",
-    "IA",
-    "ID",
-    "IL",
-    "IN",
-    "KS",
-    "KY",
-    "LA",
-    "MA",
-    "MD",
-    "ME",
-    "MH",
-    "MI",
-    "MN",
-    "MO",
-    "MS",
-    "MT",
-    "NC",
-    "ND",
-    "NE",
-    "NH",
-    "NJ",
-    "NM",
-    "NV",
-    "NY",
-    "OH",
-    "OK",
-    "OR",
-    "PA",
-    "PR",
-    "PW",
-    "RI",
-    "SC",
-    "SD",
-    "TN",
-    "TX",
-    "UT",
-    "VA",
-    "VI",
-    "VT",
-    "WA",
-    "WI",
-    "WV",
-    "WY"
-  ];
+  var stateList = ["AK", "ak", "AL", "al", "AR", "ar", "AZ", "az", "CA", "ca", "CO", "co", "CT", "ct", "DC", "dc", "DE", "de", "FL", "fl", "GA", "ga", "GU", "gu", "HI", "hi", "IA", "ia", "ID", "id", "IL", "il", "IN", "in", "KS", "ks", "KY", "ku", "LA", "la", "MA", "ma", "MD", "md", "ME", "MH", "mh", "MI", "mi", "MN", "mn", "MO", "mo", "MS", "ms", "MT", "mt", "NC", "nc", "ND", "nd", "NE", "ne", "NH", "nh", "NJ", "nj", "NM", "nm", "NV", "nv", "NY", "ny", "OH", "oh", "OK", "ok", "OR", "or", "PA", "pa", "PR", "pr", "PW", "pw", "RI", "ri", "SC", "sc", "SD", "sd", "TN", "tn", "TX", "tx", "UT", "ut", "VA", "va", "VI", "vi", "VT", "vt", "WA", "wa", "WI", "wi", "WV", "wv", "WY", "wy"];
   var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
   var address = "1650+Market+Street";
   // var placeLoc = "-33.8670522,151.1957362"; // Dummy placeholder
@@ -170,7 +114,7 @@ jQuery(document).ready(function($) {
   //Validating Function
     function validate() {
       if (document.formName.city.value == "") {
-        $("#noCity").text("Please provide a City!");
+        $("#noCity").text("*Please provide a City!");
         document.formName.city.focus();
         return false;
       }
@@ -207,7 +151,7 @@ jQuery(document).ready(function($) {
 
   searchResults.text("test of display")
 
-  $("#results-card").prepend(searchResults);
+  $("#Things-card").prepend(searchResults);
 
   }
 
@@ -216,7 +160,7 @@ jQuery(document).ready(function($) {
   $("#submit-button").on("click", function(event) {
     event.preventDefault();
     getInput();
-
+    validate();
     stateValidate();
     getWeather();
     // geoCode();
@@ -242,4 +186,10 @@ jQuery(document).ready(function($) {
   firebase.initializeApp(config);
 
   var database = firebase.database();
+  
+    function dropdownNav() {
+      $(".dropdown-trigger").dropdown();
+
+  }
+  dropdownNav();
 }); // NO JAVASCRIPT BELOW THIS LINE

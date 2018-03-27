@@ -1,5 +1,26 @@
-/* #results-card {
-    float: right;
+h5, h2, .font{
+    font-family: 'Chicle', cursive;
+}
 
+p { font-family: 'Boogaloo', cursive;
+    font-size: 25px
 
-} */
+}
+th {font-family: 'Boogaloo', cursive;
+    font-size: 25px
+
+}
+img { height: 100px;
+      width: 100px;  
+}
+
+body{
+    background-image: url("../images/bkgpaper.png");
+    background-color: #cccccc
+}
+#menu {
+    display: inline;
+}
+
+nav { text-align: center;
+        padding: 20px 20px 10px ; } 

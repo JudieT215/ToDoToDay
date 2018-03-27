@@ -20,7 +20,7 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Chicle" rel="stylesheet">
     <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
@@ -46,41 +46,47 @@
 </head>
 
 <body>
-    <nav>
+    <nav class="nav-extended">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">To Do Today</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a href="https://github.com/jstomel">Joe Bucher</a>
-                </li>
-                <li>
-                    <a href="https://github.com/Joseph526">Jeff Stomel</a>
-                </li>
-                <li>
-                    <a href="https://github.com/JudieT215">Judie Tran</a>
-                </li>
-                <li>
-                    <a href="https://github.com/danawomack">Dana Womack</a>
-                </li>
-            </ul>
-        </div>
+            <a href="#" class="brand-logo center font">ToDo ToDay APP</a>
+        
+                <a class='dropdown-trigger btn right' href='#' data-target='dropdown1'>Our Contributors</a>
+                
+                <ul id="dropdown1" class="dropdown-content right">
+                            
+                                <li>
+                                    <a href="https://github.com/jstomel">Joe Bucher
+                                        <span class="badge"></span>
+                                    </a>
+                                </li>
+                            <li>
+                                <a href="https://github.com/Joseph526">Jeff Stomel
+                                    <span class="badge"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/JudieT215">Judie Tran<span class="badge"></span></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/danawomack">Dana Womack
+                                    <span class="badge"></span>
+                                </a>
+                            </li>
+                 </ul>
+            </div>
     </nav>
 
-
         <div class="container">
-            <div class="row">
-                <header class="col s12">
-                    <div class="page-header">
-                        <h1>ToDoToDay APP</h1>
-                    </div>
-                </header>
-            </div>
+            <div class="row"> <!--extra space-->
+    
+            </div> 
             <!--row1-->
             <div class="row">
                 <section class="col s12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Please enter a City Name and State</div>
-                        <div class="panel-body">
+                    <h5 class="header">Please enter a City and State</h5>
+                    <div class="card horizontal">
+                        <div class="card-stacked">
+                        <div class="card-content center">
                             <form name="formName"class="form-inline" > 
                                 <!-- action="/action_page.php" -->
                                 <div class="form-group">
@@ -92,17 +98,16 @@
                                 <div class="input-field col s6">
                                     <input placeholder="State" id="State" name="state" type="text" class="validate" minlength="2" maxlength="2">
 
-
                                 </div>
 
-                                <button class="btn waves-effect waves-light btn-large" type="submit" id="submit-button" name="action">Submit
+                                <button class="btn waves-effect waves-light" type="submit" id="submit-button" name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
-
                             </div>
+                        
                         </form>
                         <content id="noCity"></content> 
-                       
+                        </div>
                     </div>
                 </div>
                 <!--Panel for search input-->
@@ -111,11 +116,11 @@
         </div>
         <!--row2-->
         <div class="row">
-            <section class="col s12">
-                <h3 class="header">Weather Information</h3>
+            <section class="col s6">
+                <h5 class="header">Weather Information</h5>
                 <div class="card horizontal">
                     <div class="card-stacked">
-                        <div class="card-content" id="weather-results">
+                        <div class="card-content center" id="weather-results">
                             <p>Current Temperature:
                                 <span id="currentTemp"></span>
                             </p>
@@ -129,50 +134,78 @@
                     </div>
                 </div>
             </section>
+                    <!-- Things to Do -->
+                    
+                    <div class="col s6">
+                        <h5 class="header">Things To Do</h5>
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p id="Things-card"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
         </div>
         <div class="row">
             <!--row3-->
             <!--recently search items-->
-            <div class="col s6">
+            <div class="col s12">
+                <h5 class="header">Recent Searches</h5>
                 <div class="card horizontal" id="search-results">
                     <div class="card-image">
                         <img src="">
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            <p>Recently Search Results will go here</p>
+                                            <table class="responsive-table center striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>City</th>
+                                                        <th>State</th>
+                                                        <th>Weather</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!--recent searches will go here-->
+                                                </tbody>
+                                            </table>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Things to Do -->
+        </div><!--row3-->
 
-            <div class="col s6">
-                <div class="card horizontal">
-                    <div class="card-image">
-                        <img src="">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content" id="results-card">
-                            <p>Things To Do</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--row3-->
+    </div><!--container-->
 
 
-
-    </div>
-    <!--container-->
-
-
-
-
-
+ 
+        <footer class="page-footer">
+       
+                    <!-- <ul>
+                        <li>
+                            <a href="https://github.com/jstomel">Joe Bucher</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Joseph526">Jeff Stomel</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/JudieT215">Judie Tran</a>
+                        </li>
+                        <li>
+                            <a  href="https://github.com/danawomack">Dana Womack</a>
+                        </li>
+                    </ul> -->
+    
+    </footer>
+   
 </body>
+
 
 </html>
