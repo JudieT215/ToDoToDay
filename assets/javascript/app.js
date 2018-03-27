@@ -157,8 +157,9 @@ jQuery(document).ready(function($) {
     var searchResults = $("<div>");
     for (i = 0; i < arrayOfPlaces.length; i++) {
 
-
-      searchResults.prepend(arrayOfPlaces[i]);
+      var searchItem = $("<p>");
+      searchItem.text(arrayOfPlaces[i]);
+      searchResults.prepend(searchItem);
 
       $("#Things-card").prepend(searchResults);
     }
