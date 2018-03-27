@@ -161,7 +161,7 @@ jQuery(document).ready(function($) {
       searchItem.text(arrayOfPlaces[i]);
       searchResults.prepend(searchItem);
 
-      $("#Things-card").prepend(searchResults);
+      $("#Things-card").html(searchResults);
     }
   }
 
