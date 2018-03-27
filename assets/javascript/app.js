@@ -219,7 +219,8 @@ jQuery(document).ready(function($) {
 
     stateValidate();
     getWeather();
-    geoCode();
+    // geoCode();
+    gPlace();
     displayResults();
 
   });
