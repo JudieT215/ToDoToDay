@@ -4,10 +4,11 @@ jQuery(document).ready(function($) {
   //global var
   var stateList = ["AK", "ak", "AL", "al", "AR", "ar", "AZ", "az", "CA", "ca", "CO", "co", "CT", "ct", "DC", "dc", "DE", "de", "FL", "fl", "GA", "ga", "GU", "gu", "HI", "hi", "IA", "ia", "ID", "id", "IL", "il", "IN", "in", "KS", "ks", "KY", "ku", "LA", "la", "MA", "ma", "MD", "md", "ME", "MH", "mh", "MI", "mi", "MN", "mn", "MO", "mo", "MS", "ms", "MT", "mt", "NC", "nc", "ND", "nd", "NE", "ne", "NH", "nh", "NJ", "nj", "NM", "nm", "NV", "nv", "NY", "ny", "OH", "oh", "OK", "ok", "OR", "or", "PA", "pa", "PR", "pr", "PW", "pw", "RI", "ri", "SC", "sc", "SD", "sd", "TN", "tn", "TX", "tx", "UT", "ut", "VA", "va", "VI", "vi", "VT", "vt", "WA", "wa", "WI", "wi", "WV", "wv", "WY", "wy"];
   var apiKeyG = "AIzaSyBvUORzXVi9vPlOAOl3N4kmruWeQ52VZk0";
-  var address = "1650+Market+Street";
+  var address = "";
   // var placeLoc = "-33.8670522,151.1957362"; // Dummy placeholder
   var placeLoc = "";
-  var placeType = ""; // Optional for now
+  var placeType = "restaurant"; // Optional for now
+  var arrayOfPlaces = [];
 
   //This is our API Key
   var APIKeyW = "2a101c3a4d1a6ce9";
@@ -89,7 +90,7 @@ jQuery(document).ready(function($) {
   // Google Places API request
   function gPlace() {
     var api_url =
-      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=500&location=" +
+      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=50000&location=" +
       placeLoc +
       "&type=" +
       placeType +
@@ -107,7 +108,13 @@ jQuery(document).ready(function($) {
       //     console.log(error);
       // })
       .done(function(data) {
+        console.log(request_url);
         console.log(data.results);
+        arrayOfPlaces = [];
+        for (i = 0; i < 5; i++) {
+          arrayOfPlaces.push(data.results[i].name);
+          console.log(arrayOfPlaces);
+        }
       });
   }
 
@@ -147,12 +154,14 @@ jQuery(document).ready(function($) {
 
   // creating function to display API search results to HTML
   function displayResults() {
-  var searchResults = $("<div>");
+    var searchResults = $("<div>");
+    for (i = 0; i < arrayOfPlaces.length; i++) {
 
-  searchResults.text("test of display")
 
-  $("#Things-card").prepend(searchResults);
+      searchResults.prepend(arrayOfPlaces[i]);
 
+      $("#Things-card").prepend(searchResults);
+    }
   }
 
 
@@ -163,8 +172,9 @@ jQuery(document).ready(function($) {
     validate();
     stateValidate();
     getWeather();
-    geoCode();
-    displayResults();
+    // geoCode();
+    setTimeout(gPlace, 1000); // Wait for Weather Underground to be done
+    setTimeout(displayResults, 2000); // Wait for gPlaces to be done
 
   });
 
