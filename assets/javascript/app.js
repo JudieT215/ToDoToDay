@@ -224,11 +224,12 @@ jQuery(document).ready(function($) {
   
   var firebaseCity= childSnapshot.val().fbcity;
   var firebaseState= childSnapshot.val().fbstate;
+  var firbaseCurrTemp = childSnapshot.val().fbcurrTemp;
 
   console.log(childSnapshot.val().fbcity);
   console.log(childSnapshot.val().fbstate);
 
-   $("#search-results").append("<tr><td>" + childSnapshot.val().fbcity + "</td><td>" + childSnapshot.val().fbstate + "</td></tr>");
+   $("#search-results > tbody").prepend("<tr><td>" + firebaseCity + "</td><td>" + firebaseState + "</td><td>"+ firbaseCurrTemp + "</td></tr>");
   
 
   })
@@ -237,10 +238,6 @@ jQuery(document).ready(function($) {
 
   };
 
-  // displayInTable();
-  // function displayInTable() {
-  //   $("#search-results > tbody").append("<tr><td>" + childSnapshot.val().fbcity + "</td><td>" + childSnapshot.val().fbstate + "</td></tr>");
-  // }
     function dropdownNav() {
       $(".dropdown-trigger").dropdown();
 
