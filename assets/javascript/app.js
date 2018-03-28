@@ -114,7 +114,10 @@ jQuery(document).ready(function($) {
         console.log(data.results);
         arrayOfPlaces = [];
         for (i = 0; i < 5; i++) {
-          arrayOfPlaces.push(data.results[i].name);
+          arrayOfPlaces.push({
+            gName: data.results[i].name,
+            gIcon: data.results[i].icon
+          });
           console.log(arrayOfPlaces);
         }
       });
@@ -160,7 +163,9 @@ jQuery(document).ready(function($) {
     for (i = 0; i < arrayOfPlaces.length; i++) {
 
       var searchItem = $("<p>");
-      searchItem.text(arrayOfPlaces[i]);
+      searchItem.text(" " + arrayOfPlaces[i].gName);
+      var searchIcon = $("<img>").attr("src", arrayOfPlaces[i].gIcon).addClass("icon");
+      searchItem.prepend(searchIcon);
       searchResults.prepend(searchItem);
 
       $("#Things-card").html(searchResults);
