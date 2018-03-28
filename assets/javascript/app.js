@@ -14,7 +14,9 @@ jQuery(document).ready(function($) {
   var APIKeyW = "2a101c3a4d1a6ce9";
   var state = "PA";
   var city = "Philadelphia";
-  
+  var currTemp = "test";
+  console.log(currTemp);
+
   function getWeather() {
     //Here we are building the URL we need to query the database
     var queryURL =
@@ -40,7 +42,7 @@ jQuery(document).ready(function($) {
         console.log(parsed_json.current_observation.temperature_string);
         var location = parsed_json["location"]["city"];
         var temp_f = parsed_json["current_observation"]["temp_f"];
-        var currTemp = parsed_json["current_observation"]["temperature_string"];
+        currTemp = parsed_json["current_observation"]["temperature_string"];
         console.log("Current temperature in " + location + " is: " + temp_f);
         $("#currentTemp").text(currTemp);
         var conditionPic = parsed_json["current_observation"]["icon_url"];
