@@ -155,7 +155,8 @@ jQuery(document).ready(function($) {
       .trim();
     state = $("#State")
       .val();
-    console.log("CITY: " + city + ", STATE: " + state);
+    placeType = $("input[name=grp1]:checked").attr("data-place");
+    console.log("CITY: " + city + ", STATE: " + state + " , TYPE: " + placeType);
   }
 
   // creating function to display API search results to HTML
