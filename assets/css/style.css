@@ -14,6 +14,7 @@ th {font-family: 'Boogaloo', cursive;
 img.icon {
     height: 25px;
     width: 25px;
+    filter: brightness(0.6)contrast(0.4)hue-rotate(140deg)saturate(9.9);
 }
 
 img { height: 100px;
