@@ -218,14 +218,29 @@ jQuery(document).ready(function($) {
          fbcurrTemp:currTemp,
          
          dateAdded: firebase.database.ServerValue.TIMESTAMP
-        
-     });
+     })
+
+  database.ref().on("child_added", function(childSnapshot) {
+  
+  var firebaseCity= childSnapshot.val().fbcity;
+  var firebaseState= childSnapshot.val().fbstate;
+
+  console.log(childSnapshot.val().fbcity);
+  console.log(childSnapshot.val().fbstate);
+
+   $("#search-results").append("<tr><td>" + childSnapshot.val().fbcity + "</td><td>" + childSnapshot.val().fbstate + "</td></tr>");
+  
+
+  })
 
 
 
   };
 
-  
+  // displayInTable();
+  // function displayInTable() {
+  //   $("#search-results > tbody").append("<tr><td>" + childSnapshot.val().fbcity + "</td><td>" + childSnapshot.val().fbstate + "</td></tr>");
+  // }
     function dropdownNav() {
       $(".dropdown-trigger").dropdown();
 
