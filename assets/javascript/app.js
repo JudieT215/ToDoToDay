@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
   var APIKeyW = "2a101c3a4d1a6ce9";
   var state = "PA";
   var city = "Philadelphia";
+  var currTemp = "";
   
   function getWeather() {
     //Here we are building the URL we need to query the database
@@ -40,7 +41,7 @@ jQuery(document).ready(function($) {
         console.log(parsed_json.current_observation.temperature_string);
         var location = parsed_json["location"]["city"];
         var temp_f = parsed_json["current_observation"]["temp_f"];
-        var currTemp = parsed_json["current_observation"]["temperature_string"];
+        currTemp = parsed_json["current_observation"]["temperature_string"];
         console.log("Current temperature in " + location + " is: " + temp_f);
         $("#currentTemp").text(currTemp);
         var conditionPic = parsed_json["current_observation"]["icon_url"];
@@ -182,7 +183,8 @@ jQuery(document).ready(function($) {
     getWeather();
     // geoCode();
     setTimeout(gPlace, 1000); // Wait for Weather Underground to be done
-    setTimeout(displayResults, 2000); // Wait for gPlaces to be done
+    setTimeout(displayResults, 2500); // Wait for gPlaces to be done
+    setTimeout(firebaseInput, 2000); // Wait for both APIs to be done
 
   });
 
@@ -212,8 +214,8 @@ jQuery(document).ready(function($) {
      database.ref().push({
          fbcity:city,
          fbstate:state,
-        // fbcurrTemp:currTemp,
-
+         fbcurrTemp:currTemp,
+         
          dateAdded: firebase.database.ServerValue.TIMESTAMP
         
      });
