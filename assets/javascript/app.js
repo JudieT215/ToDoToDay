@@ -132,16 +132,11 @@ jQuery(document).ready(function($) {
         return false;
       }
 
-    //   if (document.formName.state.value == "") {
-    //     $("#noState").html("Please provide a State!");
-    //     document.formName.state.focus();
-    //     return false;
-    //   }
-
     }
  function stateValidate() {
    if (stateList.indexOf(state) > -1) {
      console.log("State is in the array");
+     $("content").text("");
    } else {
      $("content").append("<br>", " *This is not a state, please enter in this format (NJ)");
      console.log("State NOT in array");
@@ -228,9 +223,10 @@ jQuery(document).ready(function($) {
 
   console.log(childSnapshot.val().fbcity);
   console.log(childSnapshot.val().fbstate);
-
-   $("#search-results > tbody").prepend("<tr><td>" + firebaseCity + "</td><td>" + firebaseState + "</td><td>"+ firbaseCurrTemp + "</td></tr>");
   
+ 
+   $("#search-results > tbody").prepend("<tr><td>" + firebaseCity + "</td><td>" + firebaseState + "</td><td>" + firbaseCurrTemp + "</td></tr>");
+ 
 
   })
 
